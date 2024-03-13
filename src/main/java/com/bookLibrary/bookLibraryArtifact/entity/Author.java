@@ -20,17 +20,13 @@ public class Author {
 
     private String biography;
 
-    //owning side of join
-    @ManyToMany
-    @JoinTable(name = "author_book", //join table Name
-            joinColumns = @JoinColumn(name = "author_id"), //join column on this table 'tableName_fieldName'
-            inverseJoinColumns = @JoinColumn(name = "book_id")) //join column on book table 'tableName_fieldName'
-    private Set<Book> book_id = new HashSet<>(); //new field on join table
+    //non owning side of join
+    @ManyToMany(mappedBy = "authors") //field name on Book table
+    private Set<Book> books = new HashSet<>(); //new field on join table
 
     //seeder line
     public Author(String firstName, String lastName, String biography) {
         super();
-        this.book_id = book_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.biography = biography;
@@ -73,12 +69,12 @@ public class Author {
         this.biography = biography;
     }
 
-    public Set<Book> getBook_id() {
-        return book_id;
+    public Set<Book> getBooks() {
+        return books;
     }
 
-    public void setBook_id(Set<Book> book_id) {
-        this.book_id = book_id;
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 }
 

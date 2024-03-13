@@ -31,8 +31,9 @@ public class Comment {
     private Comment parentComment;
 
     //a comment can only be on one book
-    @OneToMany(mappedBy="comments") //field on the book table
-    private Set<Book> Book; //new field on comment table
+    @ManyToOne
+    @JoinColumn(name="comments", nullable=false) //field name on the book table
+    private Book book;
 
     //a comment can only belong to one user
     @ManyToOne
@@ -88,12 +89,12 @@ public class Comment {
         this.parentComment = parentComment;
     }
 
-    public Set<com.bookLibrary.bookLibraryArtifact.entity.Book> getBook() {
-        return Book;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBook(Set<com.bookLibrary.bookLibraryArtifact.entity.Book> book) {
-        Book = book;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public Users getUser() {

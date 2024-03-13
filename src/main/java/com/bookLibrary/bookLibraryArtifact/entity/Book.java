@@ -21,9 +21,12 @@ public class Book {
 
     private String summary;
 
-    //non owning side of join
-    @ManyToMany(mappedBy = "book_id") //'tableName_fieldName' on this table
-    private Set<Author> author_id = new HashSet<>(); //new field on join table
+    //owning side of the join
+    @ManyToMany
+    @JoinTable(name = "author_book", //join table Name
+            joinColumns = @JoinColumn(name = "books"), //new field on join table - set on author table
+            inverseJoinColumns = @JoinColumn(name = "authors")) //new field on join table - set on author table
+    private Set<Author> authors = new HashSet<>(); //new field on join table
 
 
     //non owning side of join
@@ -39,9 +42,8 @@ public class Book {
     private Set<Users> user_id = new HashSet<>(); //new field on join table
 
     //a book can have many comments
-    @ManyToOne
-    @JoinColumn(name="book_id", nullable=false) //field name on the book table 'tableName_fieldName'
-    private Comment comments;
+    @OneToMany(mappedBy="book") //field on the book table
+    private Set<Comment> comments; //new field on comment table
 
     //seeder line
     public Book(String title, String publisher, String summary) {
@@ -89,13 +91,6 @@ public class Book {
         this.summary = summary;
     }
 
-    public Set<Author> getAuthor_id() {
-        return author_id;
-    }
-
-    public void setAuthor_id(Set<Author> author_id) {
-        this.author_id = author_id;
-    }
     public Set<Genre> getGenre_id() {
         return genre_id;
     }
@@ -103,13 +98,7 @@ public class Book {
     public void setGenre_id(Set<Genre> genre_id) {
         this.genre_id = genre_id;
     }
-    public Comment getComments() {
-        return comments;
-    }
 
-    public void setComments(Comment comments) {
-        this.comments = comments;
-    }
     public Set<OrderOnline> getOrder_id() {
         return order_id;
     }
@@ -124,6 +113,22 @@ public class Book {
     public void setUser_id(Set<Users> user_id) {
         this.user_id = user_id;
     }
+
+    public Set<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
+    }
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
+    }
+
 
 }
 
