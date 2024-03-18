@@ -1,29 +1,31 @@
 package com.bookLibrary.bookLibraryArtifact.CLI.seeder;//package com.bookLibrary.bookLibraryArtifact.CLI.seeder;
-//
-//import com.bookLibrary.bookLibraryArtifact.CLI.repository.BookRepository;
-//import com.bookLibrary.bookLibraryArtifact.entity.Book;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.stereotype.Component;
-//
-//@Component
-//public class CommentSeeder implements CommandLineRunner {
-//
-//    @Autowired
-//    BookRepository bookRepository;
-//
-//    @Override
-//    public void run(String... args) throws Exception {
-//        loadUserData();
-//    }
-//
-//    private void loadUserData() {
-//        if (bookRepository.count() == 0) {
-//            Book book1 = new Book("Title1", "Publisher1", "Summary1");
-//            Book book2 = new Book("Title2", "Publisher2", "Summary2");
-//            bookRepository.save(book1);
-//            bookRepository.save(book2);
-//        }
-//        System.out.println(bookRepository.count());
-//    }
-//}
+
+import com.bookLibrary.bookLibraryArtifact.CLI.repository.UsersRepository;
+import com.bookLibrary.bookLibraryArtifact.entity.Users;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import java.time.LocalDate;
+
+@Component
+public class UsersSeeder implements CommandLineRunner {
+
+    @Autowired
+    UsersRepository usersRepository;
+
+    @Override
+    public void run(String... args) throws Exception {
+        loadUserData();
+    }
+
+    //constructor
+    private void loadUserData() {
+        if (usersRepository.count() == 0) {
+            Users user1 = new Users("randomUser1", "user1@user.com", "####", "User1", "Inactive", LocalDate.of(1982, 9, 20), "Female", "26");
+            Users user2 = new Users("randomUser2", "user2@user.com", "####", "User2", "Active",  LocalDate.of(1982, 8, 21), "Male", "27");
+            usersRepository.save(user1);
+            usersRepository.save(user2);
+        }
+        System.out.println(usersRepository.count());
+    }
+}

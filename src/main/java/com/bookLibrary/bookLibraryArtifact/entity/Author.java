@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="author")
+@Table(name="author") //name of table
 public class Author {
 
     @Id
@@ -21,10 +21,10 @@ public class Author {
     private String biography;
 
     //non owning side of join
-    @ManyToMany(mappedBy = "authors") //field name on Book table
+    @ManyToMany(mappedBy = "authors") //used to indicate the field in the target entity that owns the relationship. It’s used on the non-owning side of the relationship.
     private Set<Book> books = new HashSet<>(); //new field on join table
 
-    //seeder line
+    //seeder constructor
     public Author(String firstName, String lastName, String biography) {
         super();
         this.firstName = firstName;
@@ -32,6 +32,7 @@ public class Author {
         this.biography = biography;
     }
 
+    //all constructor
     public Author() {
 
     }

@@ -17,6 +17,7 @@ public class AuthorSeeder implements CommandLineRunner {
         loadUserData();
     }
 
+    //constructor
     private void loadUserData() {
         if (authorRepository.count() == 0) {
             Author author1 = new Author("firstName1", "lastName1", "bio1");

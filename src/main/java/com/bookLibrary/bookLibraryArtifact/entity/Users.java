@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="users")
+@Table(name="users") //name of table
 public class Users {
 
     @Id
@@ -31,29 +31,42 @@ public class Users {
 
     private String calculatedAge;
 
-    //reading list = bookIds - need to make array list
-    private String readingList;
-
-    private String roleId;
-
     //non owning side of join
-    @ManyToMany(mappedBy = "users_id") //'tableName_fieldName' on this table
+    @ManyToMany(mappedBy = "users_id") //used to indicate the field in the target entity that owns the relationship. It’s used on the non-owning side of the relationship.
     private Set<Roles> role_id = new HashSet<>(); //new field on join table
 
     //a user can have many comments
-    @OneToMany(mappedBy="user") //field on the comment table
-    private Set<Comment> comments; //new field on the users table
+    @OneToMany(mappedBy="user") //used to indicate the field in the target entity that owns the relationship. It’s used on the non-owning side of the relationship.
+    private Set<Comment> comments;
 
     //a user can have many orders
-    @OneToMany(mappedBy="user") //field on the orderOnline table
-    private Set<OrderOnline> orders; //new field on the users table
+    @OneToMany(mappedBy="user") //used to indicate the field in the target entity that owns the relationship. It’s used on the non-owning side of the relationship.
+    private Set<OrderOnline> orders;
 
     //owning side of join
     @ManyToMany
     @JoinTable(name = "user_book", //join table Name
-            joinColumns = @JoinColumn(name = "users_id"), //join column on this table 'tableName_fieldName'
-            inverseJoinColumns = @JoinColumn(name = "book_id")) //join column on book table 'tableName_fieldName'
+            joinColumns = @JoinColumn(name = "users_id", referencedColumnName="id"), //new field on join table, referenced column on this table - set on book table
+            inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName="id")) //new field on join table, referenced column on book table - set on this table
     private Set<Book> book_id = new HashSet<>(); //new field on join table
+
+    //seeder constructor
+    public Users(String username, String email, String passwordHash, String displayName, String activeStatus, LocalDate birthDate, String gender, String calculatedAge) {
+        super();
+        this.username = username;
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.displayName = displayName;
+        this.activeStatus = activeStatus;
+        this.birthDate = birthDate;
+        this.gender = gender;
+        this.calculatedAge = calculatedAge;
+    }
+
+    //all constructor
+    public Users() {
+
+    }
 
     // other fields, getters and setters
 
@@ -122,28 +135,12 @@ public class Users {
         this.calculatedAge = calculatedAge;
     }
 
-    public String getReadingList() {
-        return readingList;
-    }
-
-    public void setReadingList(String readingList) {
-        this.readingList = readingList;
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(String roleId) {
-        this.roleId = roleId;
     }
 
     public Set<Roles> getRole_id() {

@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="book")
+@Table(name="book") //name of table
 public class Book {
 
     @Id
@@ -24,28 +24,27 @@ public class Book {
     //owning side of the join
     @ManyToMany
     @JoinTable(name = "author_book", //join table Name
-            joinColumns = @JoinColumn(name = "books"), //new field on join table - set on author table
-            inverseJoinColumns = @JoinColumn(name = "authors")) //new field on join table - set on author table
+            joinColumns = @JoinColumn(name = "books", referencedColumnName="id"), //new field on join table, referenced column on this table - set on author table
+            inverseJoinColumns = @JoinColumn(name = "authors", referencedColumnName="id")) //new field on join table, referenced column on author table - set on this table
     private Set<Author> authors = new HashSet<>(); //new field on join table
 
-
     //non owning side of join
-    @ManyToMany(mappedBy = "book_id") //'tableName_fieldName' on this table
+    @ManyToMany(mappedBy = "book_id") //used to indicate the field in the target entity that owns the relationship. It’s used on the non-owning side of the relationship.
     private Set<Genre> genre_id = new HashSet<>(); //new field on join table
 
     //non owning side of join
-    @ManyToMany(mappedBy = "book_id") //'tableName_fieldName' on this table
+    @ManyToMany(mappedBy = "book_id") //used to indicate the field in the target entity that owns the relationship. It’s used on the non-owning side of the relationship.
     private Set<OrderOnline> order_id = new HashSet<>(); //new field on join table
 
     //non owning side of join
-    @ManyToMany(mappedBy = "book_id") //'tableName_fieldName' on this table
+    @ManyToMany(mappedBy = "book_id") //used to indicate the field in the target entity that owns the relationship. It’s used on the non-owning side of the relationship.
     private Set<Users> user_id = new HashSet<>(); //new field on join table
 
     //a book can have many comments
-    @OneToMany(mappedBy="book") //field on the book table
+    @OneToMany(mappedBy="book") //used to indicate the field in the target entity that owns the relationship. It’s used on the non-owning side of the relationship.
     private Set<Comment> comments; //new field on comment table
 
-    //seeder line
+    //seeder constructor
     public Book(String title, String publisher, String summary) {
         super();
         this.title = title;
@@ -53,6 +52,7 @@ public class Book {
         this.summary = summary;
     }
 
+    //all constructor
     public Book() {
 
     }
