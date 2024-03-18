@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="genre")
+@Table(name="genre") //name of table
 public class Genre {
 
     @Id
@@ -19,9 +19,20 @@ public class Genre {
     //owning side of join
     @ManyToMany
     @JoinTable(name = "book_genre", //join table name
-            joinColumns = @JoinColumn(name = "genre_id"), //join column on this table 'tableName_fieldName'
-            inverseJoinColumns = @JoinColumn(name = "book_id")) //join column on book table 'tableName_fieldName'
+            joinColumns = @JoinColumn(name = "genre_id", referencedColumnName="id"), //new field on join table, referenced column on this table - set on book table
+            inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName="id")) //new field on join table, referenced column on book table - set on this table
     private Set<Book> book_id = new HashSet<>(); //field name on join table
+
+    //seeder constructor
+    public Genre(String genre) {
+        super();
+        this.genre = genre;
+    }
+
+    //all constructor
+    public Genre() {
+
+    }
 
 
     // other fields, getters and setters

@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="orderOnline")
+@Table(name="orderOnline")//name of table
 public class OrderOnline {
 
     @Id
@@ -16,16 +16,21 @@ public class OrderOnline {
     private Long id;
 
     //users can place many orders
-    @ManyToOne
-    @JoinColumn(name="orderOnline_id", nullable=false) //field name on the orderOnline table 'tableName_fieldName'
-    private Users user; //new field on orderOnline table
+    @ManyToOne //many to one side is the side that creates new field on table it is on
+    @JoinColumn(name="users_id", referencedColumnName="id") //new field on this table, referenced column on users table
+    private Users user;
 
     //owning side of join
     @ManyToMany
     @JoinTable(name = "book_orders", // join table name
-            joinColumns = @JoinColumn(name = "orderOnline_id"), //join column on this table 'tableName_fieldName'
-            inverseJoinColumns = @JoinColumn(name = "book_id")) //join column on book table 'tableName_fieldName'
-    private Set<Book> book_id = new HashSet<>(); //column name on join table
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName="id"), //new field on join table, referenced column on this table - set on book table
+            inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName="id")) //new field on join table, referenced column on book table - set on this table
+    private Set<Book> book_id = new HashSet<>(); //new field on join table
+
+    //all constructor
+    public OrderOnline() {
+
+    }
 
 
     // other fields, getters and setters

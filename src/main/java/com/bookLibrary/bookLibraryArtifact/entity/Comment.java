@@ -8,37 +8,47 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="comment")
+@Table(name="comment") //name of table
 public class Comment {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private String userId;
-
     private LocalDateTime createdTimestamp;
 
     private LocalDateTime lastEditTimestamp;
 
     //a child set of child comments can have many parent comments
-    @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "parentComment") //used to indicate the field in the target entity that owns the relationship. It’s used on the non-owning side of the relationship.
     private Set<Comment> childCommentSet;
 
     //a set of parent comment can have one set of child comments
-    @ManyToOne
-    @JoinColumn(name = "parentComment_id") //join field on new table
+    @ManyToOne //many to one side is the side that creates new field on table it is on
+    @JoinColumn(name = "parentComment_id", referencedColumnName="id") //new field on this table, referenced column on this table
     private Comment parentComment;
 
     //a comment can only be on one book
-    @ManyToOne
-    @JoinColumn(name="comments", nullable=false) //field name on the book table
+    @ManyToOne //many to one side is the side that creates new field on table it is on
+    @JoinColumn(name="book_id", referencedColumnName = "id") //new field on this table, referenced column on book table
     private Book book;
 
     //a comment can only belong to one user
-    @ManyToOne
-    @JoinColumn(name="users_id", nullable=false) //field name on the users table 'tableName_fieldName'
-    private Users user; //new field on comment table
+    @ManyToOne //many to one side is the side that creates new field on table it is on
+    @JoinColumn(name="users_id", referencedColumnName = "id") //new field on this table, referenced column on users table
+    private Users user;
+
+    //seeder constructor
+    public Comment(LocalDateTime createdTimestamp, LocalDateTime lastEditTimestamp) {
+        super();
+        this.createdTimestamp = createdTimestamp;
+        this.lastEditTimestamp = lastEditTimestamp;
+    }
+
+    //all constructor
+    public Comment() {
+
+    }
 
 
     // other fields, getters and setters
@@ -48,14 +58,6 @@ public class Comment {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public LocalDateTime getCreatedTimestamp() {

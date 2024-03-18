@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="roles")
+@Table(name="roles") //name of table
 public class Roles {
 
     @Id
@@ -19,9 +19,20 @@ public class Roles {
     //owning side of join
     @ManyToMany
     @JoinTable(name = "users_roles", // join table name
-            joinColumns = @JoinColumn(name = "roles_id"), //join column on this table 'tableName_fieldName'
-            inverseJoinColumns = @JoinColumn(name = "users_id")) //join column on users table 'tableName_fieldName'
+            joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"), //new field on join table, referenced column on this table - set on users table
+            inverseJoinColumns = @JoinColumn(name = "users_id", referencedColumnName = "id")) //new field on join table, referenced column on users table - set on this table
     private Set<Users> users_id = new HashSet<>(); //column name on join table
+
+    //seeder constructor
+    public Roles(String role) {
+        super();
+        this.role = role;
+    }
+
+    //all constructor
+    public Roles() {
+
+    }
 
     // other fields, getters and setters
     public Long getId() {

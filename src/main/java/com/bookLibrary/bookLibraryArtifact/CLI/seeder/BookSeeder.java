@@ -18,6 +18,7 @@ public class BookSeeder implements CommandLineRunner {
         loadUserData();
     }
 
+    //constructor
     private void loadUserData() {
         if (bookRepository.count() == 0) {
             Book book1 = new Book("Title1", "Publisher1", "Summary1");
