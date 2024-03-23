@@ -1,10 +1,9 @@
-package com.bookLibrary.bookLibraryArtifact.entity;
+package com.bookLibrary.bookLibraryArtifact.persistence.entity;
 
 
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity

@@ -1,6 +1,5 @@
-package com.bookLibrary.bookLibraryArtifact.entity;
+package com.bookLibrary.bookLibraryArtifact.persistence.entity;
 
-import com.bookLibrary.bookLibraryArtifact.entity.Book;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
