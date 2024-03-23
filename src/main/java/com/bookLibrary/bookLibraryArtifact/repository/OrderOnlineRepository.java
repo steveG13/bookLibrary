@@ -1,6 +1,6 @@
-package com.bookLibrary.bookLibraryArtifact.persistence.repository;
+package com.bookLibrary.bookLibraryArtifact.repository;
 
-import com.bookLibrary.bookLibraryArtifact.persistence.entity.OrderOnline;
+import com.bookLibrary.bookLibraryArtifact.entity.OrderOnline;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

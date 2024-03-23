@@ -1,11 +1,11 @@
 package com.bookLibrary.bookLibraryArtifact.CLI.seeder;
 
-import com.bookLibrary.bookLibraryArtifact.persistence.repository.BookRepository;
+import com.bookLibrary.bookLibraryArtifact.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.bookLibrary.bookLibraryArtifact.persistence.entity.Book;
+import com.bookLibrary.bookLibraryArtifact.entity.Book;
 
 @Component
 public class BookSeeder implements CommandLineRunner {

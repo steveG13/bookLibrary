@@ -1,7 +1,7 @@
 package com.bookLibrary.bookLibraryArtifact.CLI.seeder;//package com.bookLibrary.bookLibraryArtifact.CLI.seeder;
 
-import com.bookLibrary.bookLibraryArtifact.persistence.repository.RolesRepository;
-import com.bookLibrary.bookLibraryArtifact.persistence.entity.Roles;
+import com.bookLibrary.bookLibraryArtifact.repository.RolesRepository;
+import com.bookLibrary.bookLibraryArtifact.entity.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

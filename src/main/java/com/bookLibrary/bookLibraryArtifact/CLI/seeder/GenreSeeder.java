@@ -1,7 +1,7 @@
 package com.bookLibrary.bookLibraryArtifact.CLI.seeder;//package com.bookLibrary.bookLibraryArtifact.CLI.seeder;
 
-import com.bookLibrary.bookLibraryArtifact.persistence.repository.GenreRepository;
-import com.bookLibrary.bookLibraryArtifact.persistence.entity.Genre;
+import com.bookLibrary.bookLibraryArtifact.repository.GenreRepository;
+import com.bookLibrary.bookLibraryArtifact.entity.Genre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

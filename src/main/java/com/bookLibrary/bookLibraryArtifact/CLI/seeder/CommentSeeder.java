@@ -1,7 +1,7 @@
 package com.bookLibrary.bookLibraryArtifact.CLI.seeder;
 
-import com.bookLibrary.bookLibraryArtifact.persistence.repository.CommentRepository;
-import com.bookLibrary.bookLibraryArtifact.persistence.entity.Comment;
+import com.bookLibrary.bookLibraryArtifact.repository.CommentRepository;
+import com.bookLibrary.bookLibraryArtifact.entity.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

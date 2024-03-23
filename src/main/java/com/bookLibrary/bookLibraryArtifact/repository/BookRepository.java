@@ -1,7 +1,7 @@
-package com.bookLibrary.bookLibraryArtifact.persistence.repository;
+package com.bookLibrary.bookLibraryArtifact.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import com.bookLibrary.bookLibraryArtifact.persistence.entity.Book;
+import com.bookLibrary.bookLibraryArtifact.entity.Book;
 import org.springframework.stereotype.Repository;
 
 @Repository

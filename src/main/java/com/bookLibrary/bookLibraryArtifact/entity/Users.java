@@ -1,4 +1,4 @@
-package com.bookLibrary.bookLibraryArtifact.persistence.entity;
+package com.bookLibrary.bookLibraryArtifact.entity;
 
 
 import jakarta.persistence.*;
