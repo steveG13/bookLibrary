@@ -3,7 +3,6 @@ package com.bookLibrary.bookLibraryArtifact.entity;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 

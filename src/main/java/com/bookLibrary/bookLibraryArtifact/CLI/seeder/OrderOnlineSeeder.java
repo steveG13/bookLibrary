@@ -1,6 +1,6 @@
 package com.bookLibrary.bookLibraryArtifact.CLI.seeder;//package com.bookLibrary.bookLibraryArtifact.CLI.seeder;
 
-import com.bookLibrary.bookLibraryArtifact.CLI.repository.OrderOnlineRepository;
+import com.bookLibrary.bookLibraryArtifact.repository.OrderOnlineRepository;
 import com.bookLibrary.bookLibraryArtifact.entity.OrderOnline;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

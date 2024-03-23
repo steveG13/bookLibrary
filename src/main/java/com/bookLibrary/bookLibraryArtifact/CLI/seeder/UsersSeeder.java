@@ -1,6 +1,6 @@
 package com.bookLibrary.bookLibraryArtifact.CLI.seeder;//package com.bookLibrary.bookLibraryArtifact.CLI.seeder;
 
-import com.bookLibrary.bookLibraryArtifact.CLI.repository.UsersRepository;
+import com.bookLibrary.bookLibraryArtifact.repository.UsersRepository;
 import com.bookLibrary.bookLibraryArtifact.entity.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
